@@ -6,20 +6,20 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 
 
 const LoginScreen = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const CreateNewUser = () => {
-        navigation.navigate("MainScreen");
+        navigation.navigate("SignupScreen");
     };
-    // useEffect(() => {
-    //     const unsubscribe = firebase.auth.onAuthStateChanged(user => {
-    //         if(user){
-    //             navigation.replace("MainScreen");
-    //         }
-    //     })
-    //     return unsubscribe;
-    // }, []);
+    useEffect(() => {
+        const unsubscribe = firebase.auth.onAuthStateChanged(user => {
+            if(user){
+                navigation.replace("MainScreen");
+            }
+        })
+        return unsubscribe;
+    }, []);
 
     const handleLogin = () => {
         signInWithEmailAndPassword(firebase.auth, email.replace(' ',''), password)
