@@ -50,7 +50,7 @@ export const AppStyles = {
         fontWeight: 'bold',
         marginTop: 20,
         fontSize: 25,
-        color: '#ff5a66'
+        color: 'rgba(231,76,60,1)'
     },
     subTitle: {
         color: 'gray',
