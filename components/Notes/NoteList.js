@@ -20,8 +20,8 @@ const NoteList = (props) => {
                                 <TouchableOpacity style={styles.note}
                                     onPress={() => DetailsNote(note)}>
                                     <View style={{ flexDirection: 'row' }}>
-                                        <MaterialCommunityIcons name="note" size={24} color="black" style={{ marginRight: 15, marginTop: 5 }} />
-                                        <Text>Subject: {note.title + "\n"}
+                                        <MaterialCommunityIcons name="note" size={30} color="black" style={{ marginRight: 20, marginTop: 30 }} />
+                                        <Text style={styles.text}>Subject: {note.title + "\n"}
                                             Date: {note.date.toDate().toLocaleDateString()}
                                         </Text>
                                     </View>
@@ -37,7 +37,7 @@ const NoteList = (props) => {
 const styles = StyleSheet.create({
     boxes: {
         backgroundColor: '#e4e6eb',
-        height: 200,
+        height: 500,
         margin: 16,
         borderRadius: 16,
         width: 300,
@@ -46,12 +46,17 @@ const styles = StyleSheet.create({
     note: {
         borderColor: 'lightgrey',
         borderRadius: 40,
-        borderWidth: 2,
+        borderWidth: 4,
         margin: 2,
+        height: 100,
         width: 270,
         alignItems: 'center',
         marginBottom: 3,
         marginTop: 3
+    },
+    text: {
+        marginTop: 28,
+        fontSize: 17
     }
 })
 export default NoteList;

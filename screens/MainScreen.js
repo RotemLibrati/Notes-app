@@ -8,7 +8,6 @@ import NoteList from '../components/Notes/NoteList';
 import Spinner from '../components/Spinner/Spinner';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import LocationPicker from '../components/Location/LocationPicker';
 import MessageDialog from '../components/Messages/MessageDialog';
 
 
@@ -47,7 +46,6 @@ const MainScreen = () => {
         <Text style={AppStyles.title}> Hello {auth.currentUser?.email}</Text>
 
         {isLoading ? <Spinner /> : <NoteList notes={notes} />}
-        <LocationPicker />
         <TouchableOpacity style={styles.button}
           onPress={handleSignOut}>
           <Text style={AppStyles.buttonText}>Logout</Text>
