@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { auth, signOut } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import * as firebase from '../firebase'
@@ -39,9 +39,9 @@ const MainScreen = () => {
   }, [notes]);
   useEffect(() => {
     setModalVisible(true)
-  },[]);
+  }, []);
   return (
-      <ScrollView>
+    <ScrollView>
       {modalVisible && <MessageDialog setModalVisible={setModalVisible} modalVisible={modalVisible} />}
       <View style={{ flex: 1, alignItems: 'center' }}>
         <Text style={AppStyles.title}> Hello {auth.currentUser?.email}</Text>

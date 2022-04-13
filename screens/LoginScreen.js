@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import * as firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -15,7 +15,7 @@ const LoginScreen = () => {
     };
     useEffect(() => {
         const unsubscribe = firebase.auth.onAuthStateChanged(user => {
-            if(user){
+            if (user) {
                 navigation.replace("MainScreen");
             }
         })
@@ -23,13 +23,13 @@ const LoginScreen = () => {
     }, []);
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(firebase.auth, email.replace(' ',''), password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log('Logged in with: ', user.email);
-            navigation.navigate("MainScreen");
-        })
-        .catch(error => alert("Email or password incorrect", email, password));
+        signInWithEmailAndPassword(firebase.auth, email.replace(' ', ''), password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('Logged in with: ', user.email);
+                navigation.navigate("MainScreen");
+            })
+            .catch(error => alert("Email or password incorrect", email, password));
     };
 
 

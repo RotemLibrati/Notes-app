@@ -19,8 +19,8 @@ const NoteList = (props) => {
                             {props.notes.map((note) => (
                                 <TouchableOpacity style={styles.note}
                                     onPress={() => DetailsNote(note)}>
-                                    <View style={{flexDirection: 'row'  }}>
-                                        <MaterialCommunityIcons name="note" size={24} color="black" style={{ marginRight: 15, marginTop: 5}}/>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <MaterialCommunityIcons name="note" size={24} color="black" style={{ marginRight: 15, marginTop: 5 }} />
                                         <Text>Subject: {note.title + "\n"}
                                             Date: {note.date.toDate().toLocaleDateString()}
                                         </Text>
@@ -30,7 +30,6 @@ const NoteList = (props) => {
                             ))}
                         </ScrollView>}
                 </View>
-
             </View>
         </React.Fragment>
     )

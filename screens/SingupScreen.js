@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import * as firebase from '../firebase';
 import { AppStyles } from '../components/styles/AppStyles';
 
@@ -11,12 +11,12 @@ const SingupScreen = () => {
     const [password, setPassword] = useState('');
     const handleSignUp = () => {
         createUserWithEmailAndPassword(firebase.auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            signInWithEmailAndPassword(firebase.auth, email, password);
-            navigation.goBack();
-        })
-        .catch(error => alert("Email already exists", email, password));
+            .then((userCredential) => {
+                const user = userCredential.user;
+                signInWithEmailAndPassword(firebase.auth, email, password);
+                navigation.goBack();
+            })
+            .catch(error => alert("Email already exists", email, password));
     }
     return (
         <KeyboardAvoidingView style={AppStyles.container}

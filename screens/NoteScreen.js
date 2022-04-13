@@ -1,13 +1,11 @@
 import { View, Text, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React from 'react'
 import { AppStyles } from '../components/styles/AppStyles';
-import * as firebase from '../firebase';
 import CreateNote from '../components/Notes/CreateNote';
-import { useNavigation } from '@react-navigation/native';
 import EditNote from '../components/Notes/EditNote';
 const NoteScreen = ({ route }) => {
     let note;
-    try{
+    try {
         note = route.params.note;
     } catch {
         note = null;
@@ -21,7 +19,7 @@ const NoteScreen = ({ route }) => {
                         <CreateNote />
                     </React.Fragment>
                 )
-                    : <EditNote note={note}/>}
+                    : <EditNote note={note} />}
             </View>
         </ScrollView>
     )

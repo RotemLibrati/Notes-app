@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,9 +7,8 @@ import MainScreen from './screens/MainScreen';
 import LoginScreen from './screens/LoginScreen';
 import SingupScreen from './screens/SingupScreen';
 import NoteScreen from './screens/NoteScreen';
-import LocationPicker from './components/Location/LocationPicker';
 import Map from './components/Location/Map';
-import { Foundation, Feather  } from '@expo/vector-icons'; 
+import { Foundation, Feather } from '@expo/vector-icons';
 
 
 const Stack = createNativeStackNavigator();
@@ -39,7 +38,7 @@ export default function App() {
           tabBarIcon: ({ focused }) => {
             return (<Feather name="map-pin" size={30} color={focused ? 'blue' : 'black'} />);
           },
-        }}/>
+        }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

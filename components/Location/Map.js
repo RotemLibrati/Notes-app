@@ -25,7 +25,7 @@ const Map = () => {
     try {
         lat = notes[0].location.lat;
         lng = notes[0].location.lng;
-        
+
     } catch (e) {
         lat = 32.109333;
         lng = 34.855499;

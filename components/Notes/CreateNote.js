@@ -61,7 +61,7 @@ const CreateNote = (props) => {
         setIsLoading(true);
     };
     const handleSetDate = (event, d) => {
-        if(event.type === 'set'){
+        if (event.type === 'set') {
             setDate(d);
         } else {
             date = new Date().toDateString();
@@ -105,13 +105,13 @@ const CreateNote = (props) => {
                             <Text style={AppStyles.buttonText}>{date.toDateString()}</Text>
                         </TouchableOpacity>
                         {isDateOpen &&
-                        <DateTimePicker
-                            mode='date'
-                            display='default'
-                            value={date}
-                            onChange={handleSetDate}
-                            minimumDate={new Date()}
-                        />}
+                            <DateTimePicker
+                                mode='date'
+                                display='default'
+                                value={date}
+                                onChange={handleSetDate}
+                                minimumDate={new Date()}
+                            />}
                     </React.Fragment>}
             </ScrollView>
 
