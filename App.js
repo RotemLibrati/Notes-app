@@ -8,7 +8,7 @@ import LoginScreen from './screens/LoginScreen';
 import SingupScreen from './screens/SingupScreen';
 import NoteScreen from './screens/NoteScreen';
 import Map from './components/Location/Map';
-import { Foundation, Feather } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 
 
 const Stack = createNativeStackNavigator();
@@ -31,7 +31,7 @@ export default function App() {
       <Tab.Navigator screenOptions={{ headerShown: false }} >
         <Tab.Screen name='Notes' component={MainAppScreen} options={{
           tabBarIcon: ({ focused }) => {
-            return (<Foundation name="clipboard-notes" size={30} color={focused ? 'blue' : 'black'} />);
+            return (<MaterialCommunityIcons name="note" size={30} color={focused ? 'blue' : 'black'} />);
           },
         }} />
         <Tab.Screen name='Map' component={Map} options={{
