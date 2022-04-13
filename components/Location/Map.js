@@ -5,6 +5,12 @@ import { auth } from '../../firebase';
 import * as firebase from '../../firebase';
 const Map = () => {
     const [notes, setNotes] = useState([]);
+    const [region, setRegion] = useState({
+        latitude: 32.109333,
+        longitude: 34.855499,
+        latitudeDelta: 0.5,
+        longitudeDelta: 0.5
+    });
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -27,12 +33,14 @@ const Map = () => {
         <View style={styles.container}>
             <MapView
                 style={styles.map}
-                region={{
+                initialRegion={{
                     latitude: lat,
                     longitude: lng,
                     latitudeDelta: 0.5,
                     longitudeDelta: 0.5
-                }}>
+                }}
+                onRegionChangeComplete={(region) => setRegion(region)}
+            >
                 {isLoading ? <></> :
                     notes.map((note) => (
                         <MapView.Marker
