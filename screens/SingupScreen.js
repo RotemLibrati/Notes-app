@@ -16,7 +16,13 @@ const SingupScreen = () => {
                 signInWithEmailAndPassword(firebase.auth, email, password);
                 navigation.goBack();
             })
-            .catch(error => alert("Email already exists", email, password));
+            .catch(function() {
+                if (email){
+                    alert("There is an error in the details", email, password);
+                } else {
+                    alert("You need to fill in details", email, password);
+                }
+            })  
     }
     return (
         <KeyboardAvoidingView style={AppStyles.container}
