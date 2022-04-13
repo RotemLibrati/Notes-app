@@ -29,7 +29,7 @@ const CreateNote = (props) => {
         const handleLocation = async () => {
             const hasPermission = await verifyPermissions();
             if (!hasPermission) {
-                alert("There is no have permmision");
+                alert("Permission does not exist");
                 return;
             }
             try {
@@ -110,6 +110,7 @@ const CreateNote = (props) => {
                             display='default'
                             value={date}
                             onChange={handleSetDate}
+                            minimumDate={new Date()}
                         />}
                     </React.Fragment>}
             </ScrollView>

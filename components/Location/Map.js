@@ -25,6 +25,7 @@ const Map = () => {
     try {
         lat = notes[0].location.lat;
         lng = notes[0].location.lng;
+        
     } catch (e) {
         lat = 32.109333;
         lng = 34.855499;
@@ -39,8 +40,7 @@ const Map = () => {
                     latitudeDelta: 0.5,
                     longitudeDelta: 0.5
                 }}
-                onRegionChangeComplete={(region) => setRegion(region)}
-            >
+                onRegionChangeComplete={(region) => setRegion(region)}>
                 {isLoading ? <></> :
                     notes.map((note) => (
                         <MapView.Marker
