@@ -3,13 +3,25 @@ import React, { useState } from 'react'
 import { AppStyles } from '../components/styles/AppStyles';
 import * as firebase from '../firebase';
 import CreateNote from '../components/Notes/CreateNote';
-const NoteScreen = () => {
-    const [title, setTitle] = useState('');
+import { useNavigation } from '@react-navigation/native';
+import EditNote from '../components/Notes/EditNote';
+const NoteScreen = ({ route }) => {
+    let note;
+    try{
+        note = route.params.note;
+    } catch {
+        note = null;
+    }
     return (
         <ScrollView>
             <View style={AppStyles.customContainer}>
-                <Text style={AppStyles.title}>Create New Note</Text>
-                <CreateNote />
+                {!note ? (
+                    <React.Fragment>
+                        <Text style={AppStyles.title}>Create New Note</Text>
+                        <CreateNote />
+                    </React.Fragment>
+                )
+                    : <EditNote note={note}/>}
             </View>
         </ScrollView>
     )

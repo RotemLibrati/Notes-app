@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpaci
 import * as firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { AppStyles } from '../components/styles/AppStyles';
 
 
 const LoginScreen = () => {
@@ -24,45 +25,43 @@ const LoginScreen = () => {
     const handleLogin = () => {
         signInWithEmailAndPassword(firebase.auth, email.replace(' ',''), password)
         .then((userCredential) => {
-            // Signed in 
             const user = userCredential.user;
             console.log('Logged in with: ', user.email);
             navigation.navigate("MainScreen");
         })
-        .catch(error => alert(error.message, email, password));
-        // firebase.deleteRowFromFirestore("users", "Ga").then(list => console.log("User Added"))
+        .catch(error => alert("Email or password incorrect", email, password));
     };
 
 
     return (
-        <KeyboardAvoidingView style={styles.container}
+        <KeyboardAvoidingView style={AppStyles.container}
             behavior="padding"
         >
-            <View style={styles.inputContainer}>
+            <View style={AppStyles.inputContainer}>
                 <TextInput
                     placeholder='Email'
                     value={email}
                     onChangeText={text => setEmail(text)}
-                    style={styles.input}
+                    style={AppStyles.input}
                 />
                 <TextInput
                     placeholder='Password'
                     value={password}
                     onChangeText={text => setPassword(text)}
-                    style={styles.input}
+                    style={AppStyles.input}
                     secureTextEntry
                 />
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={AppStyles.buttonContainer}>
                 <TouchableOpacity
                     onPress={handleLogin}
-                    style={styles.button}>
-                    <Text style={styles.buttonText}>Login</Text>
+                    style={AppStyles.button}>
+                    <Text style={AppStyles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={CreateNewUser}
-                    style={[styles.button, styles.buttonOutline]}>
-                    <Text style={styles.buttonOutlineText}>Signup</Text>
+                    style={[AppStyles.button, AppStyles.buttonOutline]}>
+                    <Text style={AppStyles.buttonOutlineText}>Signup</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
@@ -70,51 +69,3 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    inputContainer: {
-        width: '80%'
-    },
-    buttonText: {},
-    input: {
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        borderRadius: 10,
-        marginTop: 5
-    },
-    buttonContainer: {
-        width: '60%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 40
-    },
-    button: {
-        backgroundColor: '#0782F9',
-        width: '100%',
-        padding: 15,
-        borderRadius: 10,
-        alignItems: 'center'
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: '700',
-        fontSize: 16
-    },
-    buttonOutline: {
-        backgroundColor: 'white',
-        marginTop: 5,
-        borderColor: '#0782F9',
-        borderWidth: 2
-    },
-    buttonOutlineText: {
-        color: '#0782F9',
-        fontWeight: '700',
-        fontSize: 16
-    }
-})
